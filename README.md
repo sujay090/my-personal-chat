@@ -1,89 +1,78 @@
 # 🐧 Linux Helper - Personal CLI Chatbot
 
-A fast, local CLI chatbot for Linux/Unix command help. Runs entirely on your machine using Ollama.
+A fast CLI chatbot for Linux/Unix command help. Uses **Groq API** (free, cloud-based) - no local resources needed!
 
-## Quick Start
+## ⚡ Quick Start
 
-### 1. Install Ollama (if not installed)
+### 1. Get Free API Key
+Go to [console.groq.com/keys](https://console.groq.com/keys) → Sign up → Create API Key
+
+### 2. Install
 ```bash
-brew install ollama
-```
-
-### 2. Start Ollama & Pull Model
-```bash
-# Start Ollama service
-ollama serve
-
-# In another terminal, pull the model (one time only)
-ollama pull llama3.2:3b
-```
-
-### 3. Install & Run
-```bash
-# Install dependencies
 npm install
+```
 
-# Run interactive mode
+### 3. Set API Key
+```bash
+export GROQ_API_KEY="your-key-here"
+```
+
+### 4. Run
+```bash
+# Interactive mode
 npm start
 
-# Or quick question
+# Quick question
 node index.js "how to find large files"
 ```
 
-### 4. Global Access (Optional)
+## 🌐 Global Access (Optional)
+
+Run from anywhere in terminal:
 ```bash
 npm link
 
-# Now use from anywhere:
-ask "how to see disk usage"
+# Now use:
+ask "how to list docker containers"
+ask   # opens interactive mode
 ```
 
-## Usage
+## 💡 Usage Examples
 
-**Interactive Mode:**
 ```bash
-npm start
-# or after npm link:
-ask
+ask "how to delete a folder"
+ask "what is grep"
+ask "find files larger than 100mb"
+ask "show disk usage"
 ```
 
-**Quick Question:**
+## ⚙️ Make API Key Permanent
+
+Add to your shell config:
 ```bash
-node index.js "how to grep recursively"
-# or after npm link:
-ask "how to list all docker containers"
+# For zsh (default on Mac)
+echo 'export GROQ_API_KEY="your-key"' >> ~/.zshrc
+source ~/.zshrc
+
+# For bash
+echo 'export GROQ_API_KEY="your-key"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-## Commands in Chat
-- `exit` or `quit` - Exit the chatbot
-- `clear` - Clear conversation history
+## 🔧 Commands in Chat
 
-## Change Model
+| Command | What it does |
+|---------|--------------|
+| `exit` or `quit` | Close chatbot |
+| `clear` | Reset chat history |
 
-Edit `CONFIG.model` in `index.js`. Good options for M4 16GB:
+## 📝 Features
 
-| Model | Speed | Quality | RAM |
-|-------|-------|---------|-----|
-| `llama3.2:3b` | ⚡⚡⚡ | Good | ~4GB |
-| `llama3.2:8b` | ⚡⚡ | Better | ~6GB |
-| `mistral:7b` | ⚡⚡ | Great | ~5GB |
-| `codellama:7b` | ⚡⚡ | Best for code | ~5GB |
-
-Pull new model: `ollama pull <model-name>`
-
-## Examples
-
-```
-You: how to find files modified in last 24 hours
-
-🤖:
-```bash
-find . -mtime -1
-```
-Finds files modified within the last 24 hours in current directory.
-- `-mtime -1` = modified less than 1 day ago
-- Add `-type f` for files only
-```
+- ✅ **Free** - Uses Groq's free API
+- ✅ **Fast** - Cloud-based, no local resources
+- ✅ **Simple answers** - Easy to understand English
+- ✅ **Streaming** - See answers as they come
+- ✅ **Context** - Remembers your previous questions
 
 ---
 
